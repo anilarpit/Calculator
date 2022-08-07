@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+.heading {
+    text-align: center;
+    border: 10px solid black;
+}
+
+.heading:hover {
+    background-color: aquamarine;
+}
+
+.output {
+    height: 50px;
+    border: 8px solid black;
+}
+
+/*.buttons-row-1 {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.buttons-row-2, .buttons-row-3, .buttons-row-4 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.buttons-row-5 {
+    display: grid;
+    grid-template-columns: auto auto;
+}*/
+
+button {
+    padding: 5px;
+    font-size: 20px;
+
+}
+
+.buttons {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
+}
+
+button:hover {
+    background-color: blue;
+}
