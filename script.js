@@ -1,6 +1,6 @@
 console.log("Working")
 
-function sum(x,y) {
+function sum(x, y) {
     let add = x + y;
     console.log(add);
     return add;
