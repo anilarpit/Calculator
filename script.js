@@ -7,7 +7,7 @@ function sum(x, y) {
 }
 
 function mult(x, y) {
-    let out = x * y;
+    let out = x *y;
     console.log(out);
     return out;
 }
