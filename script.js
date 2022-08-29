@@ -14,8 +14,8 @@ function mult(x, y) {
 
 function div(x, y) {
     let div = x / y;
-    console.log(out);
-    return out;
+    console.log(div);
+    return div;
 }
 
 function sub(x, y) {
