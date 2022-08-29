@@ -24,6 +24,20 @@ function sub(x, y) {
     return out;
 }
 
+function check() {
+    let out = document.getElementsByClassName('output')[0];
+    let content = out.innerHTML;
+    let prev = content;
+    if(content.length > 1) {
+        prev = content[content.length - 2];
+    }
+    if(( prev == '/') || ( prev == '*') || (prev == '-') || (prev == "+")) {
+        return 0;
+    }
+    return 1;
+}
+
+
 function print_nat(numid) {
     let out = document.getElementsByClassName('output')[0];
     let output_area = out.innerHTML;
@@ -51,8 +65,33 @@ function print_zero() {
 }
 
 function solve(click_id) {
-    let out = document.getElementsByClassName('output')[0];
-    let 
+    let equation = document.getElementsByClassName('output')[0].innerHTML;
+    let eq = equation.split(" ");
+    console.log(eq);
+    let last = eq[eq.length - 1];
+    if((last == "/") || (last == "*") || (last == "+") || (last == "-")) {
+        alert("Error");
+        return 0;
+    }
+    for (let i = 0; i < eq.length; i++) {
+        if(i % 2 == 1) {
+            let ans = 0;
+            if(eq[i] == "+") {
+                ans = sum(parseInt(eq[i-1]), parseInt(eq[i+1]));
+                eq[i+1] = ans.toString();
+             } else if (eq[i] == "/") {
+                ans = div(parseInt(eq[i-1]), parseInt(eq[i+1]));
+                eq[i+1] = ans.toString();
+            } else if (eq[i] == "*") {
+                ans = mult(parseInt(eq[i-1]), parseInt(eq[i+1]));
+                eq[i+1] = ans.toString();
+            } else if (eq[i] == "-") {
+                ans = sub(parseInt(eq[i-1]), parseInt(eq[i+1]));
+                eq[i+1] = ans.toString();
+            } else {}
+        }
+    }
+    document.getElementsByClassName('output')[0].innerHTML = eq[eq.length - 1];
 }
 
 function printout(click_id) {
@@ -69,14 +108,31 @@ function printout(click_id) {
     } else if (click_id == "zero") {
         print_zero();
     } else if (click_id == "divi") {
-
-        out.innerHTML = out.innerHTML + " / ";
+        if(check()) {
+            out.innerHTML = out.innerHTML + " / ";
+        } else {
+            alert("Error")
+        }
     } else if (click_id == "multi") {
-        out.innerHTML = out.innerHTML + " * ";
+        if(check()) {
+            out.innerHTML = out.innerHTML + " * ";
+        } else {
+            alert("Error")
+        }
     } else if (click_id == "plus") {
-        out.innerHTML = out.innerHTML + " + ";
+        if(check()) {
+            out.innerHTML = out.innerHTML + " + ";
+        } else {
+            alert("Error")
+        }
     } else if (click_id == "sub") {
-        out.innerHTML = out.innerHTML + " - ";
+        if(check()) {
+            out.innerHTML = out.innerHTML + " - ";
+        } else {
+            alert("Error")
+        }
+    } else if (click_id == "equal") {
+        solve();
     } else {
         console.log("wrong button assigned")
     }
